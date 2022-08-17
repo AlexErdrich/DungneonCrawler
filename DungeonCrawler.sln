@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32804.467
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DungeonCrawler", "DungeonCrawler\DungeonCrawler.csproj", "{5945C77B-A604-43CD-8BD8-81E7B9B3E6A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DungeonCrawler", "DungeonCrawler\DungeonCrawler.csproj", "{5945C77B-A604-43CD-8BD8-81E7B9B3E6A2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "tables", "tables\tables.csproj", "{70BB1F34-49B2-43F6-8322-6DD45C8B7D35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "homework", "homework\homework.csproj", "{D90A921F-2DF9-40AE-A6B4-E7249315FD8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{5945C77B-A604-43CD-8BD8-81E7B9B3E6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5945C77B-A604-43CD-8BD8-81E7B9B3E6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5945C77B-A604-43CD-8BD8-81E7B9B3E6A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70BB1F34-49B2-43F6-8322-6DD45C8B7D35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70BB1F34-49B2-43F6-8322-6DD45C8B7D35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70BB1F34-49B2-43F6-8322-6DD45C8B7D35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70BB1F34-49B2-43F6-8322-6DD45C8B7D35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D90A921F-2DF9-40AE-A6B4-E7249315FD8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D90A921F-2DF9-40AE-A6B4-E7249315FD8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D90A921F-2DF9-40AE-A6B4-E7249315FD8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D90A921F-2DF9-40AE-A6B4-E7249315FD8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
