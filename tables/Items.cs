@@ -9,7 +9,6 @@
         private int _minDamage;
         private int _maxDamage;
         private decimal _wCost;
-        private decimal _reSellCost;
         private string _description;
 
         //Props (public datatype PascalCaseOfCamelCase)
@@ -20,7 +19,7 @@
         public int MinDamage { get { return _minDamage; } set { { if (_minDamage <= _maxDamage) { _minDamage = value; } else { _minDamage = _maxDamage; } } } }
         public int MaxDamage { get { return _maxDamage; } set { _maxDamage = value; } }
         public decimal WCost { get { return _wCost; } set { _wCost = value; } }
-        public decimal ReSellCost { get { return _reSellCost; } set { _reSellCost = value; } }
+
 
 
         
@@ -31,7 +30,6 @@
         {
             ItemName = itemName;
             WCost = wCost;
-            ReSellCost = reSellCost;
             DamageType = damageType;
             MinDamage = minDamage;
             MaxDamage = maxDamge;
@@ -39,8 +37,6 @@
 
         }
         public Items() { }
-
-
 
         //Methods
 
