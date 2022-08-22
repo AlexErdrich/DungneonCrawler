@@ -1,16 +1,11 @@
 ﻿namespace tables
 {
-    public class CharClasses
+    public enum Class
     {
-        //Warrior
-
-
-        //Ranger
-
-
-        //Mage
-
-
-        //Priest
+        Warrior = 20,
+            Ranger = 30,
+            Mage = 40,
+            Priest = 50,
     }
+    
 }

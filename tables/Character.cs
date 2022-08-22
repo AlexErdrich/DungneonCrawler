@@ -1,47 +1,38 @@
 ﻿namespace tables
 {
-    public class Character
+    public abstract class Character
     {
-        //NAME
-        //HEALTH
-        //MANA
-        //EXP
-        //MONEY
-
-
-
+      
         //Fields (private datatype _camelCase;)
-        private string _name;
-        private int _armorClass;
-        private int _currentHealth;
-        private int _maxHealth;
-        private int _currentMana;
-        private int _maxMana;
-        private int _currentExp;
-        private int _neededExp;
+        private int _currentHealth;     
+        private int _currentMana;    
         private decimal _monies;
-        private int _class;
+       
 
-
+        public int MyProperty { get; set; }
 
         //Props (public datatype PascalCaseOfCamelCase)
-        public string Name { get { return _name; } set { _name = value; } }
-        public int AC { get { return _armorClass; } set { _armorClass = value; } }
+        public string Name { get; set; }
+        public int AC { get; set; }
         public int CHealth { get { return _currentHealth; } set { if (value > MaxHealth) { _currentHealth = MaxHealth; } else { _currentHealth = value; } } }
-        public int MaxHealth { get { return _maxHealth; } set { _maxHealth = value; } }
-        public int CMana { get { return _currentMana; } set { _maxMana = value; } }
-        public int MaxMana { get { return _maxMana; } set { _maxMana = value; } }
-
-        public int CExp { get { return _currentExp; } set { _currentExp = value; } }
-        public int NExp { get { return _neededExp; } set { _neededExp = value; } }
+        public int MaxHealth { get; set;  }
+        public int CMana { get { return _currentMana; } set { if (value > MaxMana) { _currentMana = MaxMana; } else { _currentMana = value; } } }
+        public int MaxMana { get; set; }
+        public int CExp { get;  set;}
+        public int NExp { get; set; }
         public decimal Monies { get { return _monies; } set { _monies = value; } }
-        public int Class { get { return _class; } set { _class = value; } }
+        public int Strength { get; set; }
+        public int Dexterity { get; set; }
+        public int Constitution { get; set; }
+        public int Wisdom { get; set; }
+        public int Intelligence { get; set; }
+        public int Charisma { get; set; }
 
 
 
         //Constructors (public class(props)) (ctor + tab + tab for default)
-        public Character(string name, int ac, int cHealth, int maxHealth, int cMana, int maxMana, int cExp, int nExp, decimal monies, int job)
-        {
+        public Character(string name, int ac, int cHealth, int maxHealth, int cMana, int maxMana, int cExp, int nExp, decimal monies, , int str, int con, int dex, int intel, int wis, int cha)
+        {  
             Name = name;
             AC = ac;
             CHealth = cHealth;
@@ -49,10 +40,32 @@
             CMana = cMana;
             MaxMana = maxMana;
             CExp = cExp;
-            NExp = nExp;
+            NExp = nExp; 
             Monies = monies;
-            Class = job;
+            Strength = str;
+            Constitution = con;
+            Wisdom = wis;
+            Charisma = cha;
+            Dexterity = dex;
+            Intelligence = intel;
+            int[] statmod = {str, con, dex, intel, wis, cha};
+            for (int stat = 0; stat < statmod.Length; stat++)
+            {
+                if (statmod[stat] >= 0 && statmod[stat] < 2){ statmod[stat] = -5; }
+                else if (statmod[stat] >= 2 && statmod[stat] < 4) { statmod[stat] = -4; }
+                else if (statmod[stat] >= 4 && statmod[stat] < 6) { statmod[stat] = -3; }
+                else if (statmod[stat] >= 6 && statmod[stat] < 8) { statmod[stat] = -2; }
+                else if (statmod[stat] >= 8 && statmod[stat] < 10) { statmod[stat] = -1; }
+                else if (statmod[stat] >= 10 && statmod[stat] < 12) { statmod[stat] = 0; }
+                else if (statmod[stat] >= 12 && statmod[stat] < 14) { statmod[stat] = +1; }
+                else if (statmod[stat] >= 14 && statmod[stat] < 16) { statmod[stat] = +2; }
+                else if (statmod[stat] >= 16 && statmod[stat] < 18) { statmod[stat] = +3; }
+                else if (statmod[stat] >= 18 && statmod[stat] < 20) { statmod[stat] = +4; }
+                else if (statmod[stat] >= 20) { statmod[stat] = +5; }
+            }
+         
         }
+        
         public Character() { }
 
         //Methods     
@@ -62,5 +75,8 @@
         }
         public int injury(Items weapon) { int Health = CHealth - weapon.damage(); return Health; }
 
+
+         
+        // 0-1 (-5) 2-3 (-4) 4-5 (-3) 6-7 (-2) 8-9 (-1) 10-11 (0) 12-13 (+1) 14-15 (+2) 16-17 (+3) 18-19 (+4) 20 (+5)
     }
 }  
