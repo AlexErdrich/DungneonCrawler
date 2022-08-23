@@ -38,12 +38,10 @@
 
         //Methods
 
-        public int healing() { Random rng = new Random(); int healing =  rng.Next(MinDamage, MaxDamage +1 ); return healing;}
-
-        public int damage() { Random rng = new Random(); int damage = rng.Next(MinDamage, MaxDamage + 1); return damage;}
+        
+        public int alterHealth() { Random rng = new Random(); int damage = rng.Next(MinDamage, MaxDamage + 1); return damage;}
 
         public decimal price() { decimal sprice = WCost / 2;return sprice;}       
 
-
-    }
-}
+    }//class
+}//name

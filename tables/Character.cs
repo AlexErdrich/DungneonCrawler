@@ -27,11 +27,13 @@
         public int Wisdom { get; set; }
         public int Intelligence { get; set; }
         public int Charisma { get; set; }
+        
+        public int[] StatMod { get; }
 
 
 
         //Constructors (public class(props)) (ctor + tab + tab for default)
-        public Character(string name, int ac, int cHealth, int maxHealth, int cMana, int maxMana, int cExp, int nExp, decimal monies, , int str, int con, int dex, int intel, int wis, int cha)
+        public Character(string name, int ac, int cHealth, int maxHealth, int cMana, int maxMana, int cExp, int nExp, decimal monies, int str, int con, int dex, int intel, int wis, int cha)
         {  
             Name = name;
             AC = ac;
@@ -51,18 +53,19 @@
             int[] statmod = {str, con, dex, intel, wis, cha};
             for (int stat = 0; stat < statmod.Length; stat++)
             {
-                if (statmod[stat] >= 0 && statmod[stat] < 2){ statmod[stat] = -5; }
-                else if (statmod[stat] >= 2 && statmod[stat] < 4) { statmod[stat] = -4; }
-                else if (statmod[stat] >= 4 && statmod[stat] < 6) { statmod[stat] = -3; }
-                else if (statmod[stat] >= 6 && statmod[stat] < 8) { statmod[stat] = -2; }
-                else if (statmod[stat] >= 8 && statmod[stat] < 10) { statmod[stat] = -1; }
-                else if (statmod[stat] >= 10 && statmod[stat] < 12) { statmod[stat] = 0; }
-                else if (statmod[stat] >= 12 && statmod[stat] < 14) { statmod[stat] = +1; }
-                else if (statmod[stat] >= 14 && statmod[stat] < 16) { statmod[stat] = +2; }
-                else if (statmod[stat] >= 16 && statmod[stat] < 18) { statmod[stat] = +3; }
-                else if (statmod[stat] >= 18 && statmod[stat] < 20) { statmod[stat] = +4; }
-                else if (statmod[stat] >= 20) { statmod[stat] = +5; }
+                if (statmod[stat] < 2){ statmod[stat] = -5; }
+                else if (statmod[stat] < 4) { statmod[stat] = -4; }
+                else if (statmod[stat] < 6) { statmod[stat] = -3; }
+                else if (statmod[stat] < 8) { statmod[stat] = -2; }
+                else if (statmod[stat] < 10) { statmod[stat] = -1; }
+                else if (statmod[stat] < 12) { statmod[stat] = 0; }
+                else if (statmod[stat] < 14) { statmod[stat] = +1; }
+                else if (statmod[stat] < 16) { statmod[stat] = +2; }
+                else if (statmod[stat] < 18) { statmod[stat] = +3; }
+                else if (statmod[stat] < 20) { statmod[stat] = +4; }
+                else { statmod[stat] = +5; }
             }
+            StatMod = statmod;
          
         }
         
@@ -76,7 +79,8 @@
         public int injury(Items weapon) { int Health = CHealth - weapon.damage(); return Health; }
 
 
-         
+       
+        
         // 0-1 (-5) 2-3 (-4) 4-5 (-3) 6-7 (-2) 8-9 (-1) 10-11 (0) 12-13 (+1) 14-15 (+2) 16-17 (+3) 18-19 (+4) 20 (+5)
     }
 }  

@@ -2,10 +2,10 @@
 {
     public enum Class
     {
-        Warrior = 20,
-            Ranger = 30,
-            Mage = 40,
-            Priest = 50,
+            Warrior = 10,
+            Ranger = 20,
+            Mage = 30,
+            Priest = 40,
     }
     
 }

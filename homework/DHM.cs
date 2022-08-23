@@ -93,21 +93,21 @@ namespace homework
         {
             string[] rooms =
             {
-
-
-                "The room is dark and musty with the smell of lost souls.",
-                "You enter a pretty pink powder room and instantly get glitter on you.",
-                "You arrive in a room filled with chairs and a ticket stub machine...DMV",
-                "You enter a quiet library... silence... nothing but silence....",
-                "As you enter the room, you realize you are standing on a platform surrounded by sharks",
-                "Oh my.... what is that smell? You appear to be standing in a compost pile",
-                "You enter a dark room and all you can hear is hair band music blaring.... This is going to be bad!",
-                "Oh no.... the worst of them all... Oprah's bedroom....",
-                "The room looks just like the room you are sitting in right now... or does it?",
+                "As you enter the room, ",
             };
+            string[] rooms2 = 
+            {
+                "the floor boards creak and you suddenly ",
+            };
+            string[] rooms3 =
+            {
+                $"spot a {Monster.monster} that looks to be eating the remains of the last adventurer",
+            };
+            string desc1 = rooms[new Random().Next(rooms.Length)];
+            string desc2 = rooms2[new Random().Next(rooms2.Length)];
+            string desc3 = rooms3[new Random().Next(rooms3.Length)];
 
-
-            return rooms[new Random().Next(rooms.Length)];
+            return desc1 + desc2 + desc3;
         }
     }//end Class
 }//end Name
