@@ -1,6 +1,6 @@
 ﻿namespace tables
 {
-    public enum Class
+    public enum Class1
     {
             Warrior = 10,
             Ranger = 20,

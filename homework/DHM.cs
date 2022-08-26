@@ -11,16 +11,30 @@ namespace homework
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Tower Fantasy!");
+
+            int floor = 0;
+            Console.WriteLine("\n\nPlease, Tell us your name, great hero... ");
+            string username = Console.ReadLine();
+
+            var races = Enum.GetValues(typeof(Race));
+            int index = 1;
+            foreach (var race in races) { Console.WriteLine($"{index}) {race}"); index++; }
+            Console.WriteLine("Please select from the list, what race you want to be.");
+            int userInput = int.Parse(Console.ReadLine()) - 1;
+            Race userRace = (Race)userInput;
+
+
             bool gameRun = true;
             bool encounter = true;
             do
             {
                 Console.WriteLine("\n\nSelect your action, traveler.\n\n");
 
-                Console.WriteLine("Explore");
-                Console.WriteLine("Character Info");
+                Console.WriteLine("Explore (e)");
+                Console.WriteLine("Character Info (c)");
                 //Console.WriteLine($@" ");  
-                Console.WriteLine("Exit");
+                Console.WriteLine("Exit (esc)");
                 ConsoleKey actions = new ConsoleKey();
                 actions = Console.ReadKey().Key;
                 Console.Clear();
@@ -29,17 +43,16 @@ namespace homework
                 {
                     case ConsoleKey.E:
                         string room = GetRoom();
-                        Console.WriteLine($"You have explored a room and found... ");
                         Console.WriteLine(room);
 
                         do
                         {
                             Console.WriteLine("\n\nSelect your action, traveler.\n\n");
 
-                            Console.WriteLine("Attack");
-                            Console.WriteLine("Run Away");
-                            Console.WriteLine("Character Info");
-                            Console.WriteLine("Monster Info");
+                            Console.WriteLine("Attack (a)");
+                            Console.WriteLine("Run Away (r)");
+                            Console.WriteLine("Character Info (c)");
+                            Console.WriteLine("Monster Info (m)");
 
                             ConsoleKey eActions = new ConsoleKey();
                             eActions = Console.ReadKey().Key;
@@ -92,16 +105,16 @@ namespace homework
         private static string GetRoom()
         {
             string[] rooms =
-            {
-                "As you enter the room, ",
+             {
+               "As you enter the room, ",
             };
-            string[] rooms2 = 
-            {
-                "the floor boards creak and you suddenly ",
-            };
+            string[] rooms2 =
+             {
+               "the floor boards creak and you suddenly ",
+           };
             string[] rooms3 =
-            {
-                $"spot a {Monster.monster} that looks to be eating the remains of the last adventurer",
+             {
+                $"spot a {Monster.SpawnWeakEnemy} that looks to be eating the remains of the last adventurer.",
             };
             string desc1 = rooms[new Random().Next(rooms.Length)];
             string desc2 = rooms2[new Random().Next(rooms2.Length)];
@@ -109,6 +122,7 @@ namespace homework
 
             return desc1 + desc2 + desc3;
         }
+
     }//end Class
 }//end Name
 

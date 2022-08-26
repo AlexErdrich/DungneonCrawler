@@ -27,14 +27,15 @@
         public int Wisdom { get; set; }
         public int Intelligence { get; set; }
         public int Charisma { get; set; }
-        
         public int[] StatMod { get; }
+        public Weapon EquippedWeapon { get; set; }
+
 
 
 
         //Constructors (public class(props)) (ctor + tab + tab for default)
-        public Character(string name, int ac, int cHealth, int maxHealth, int cMana, int maxMana, int cExp, int nExp, decimal monies, int str, int con, int dex, int intel, int wis, int cha)
-        {  
+        public Character(string name, int ac, int cHealth, int maxHealth, int cMana, int maxMana, int cExp, int nExp, decimal monies, int str, int con, int dex, int intel, int wis, int cha, Weapon equippedWeapon)
+        {
             Name = name;
             AC = ac;
             CHealth = cHealth;
@@ -42,7 +43,7 @@
             CMana = cMana;
             MaxMana = maxMana;
             CExp = cExp;
-            NExp = nExp; 
+            NExp = nExp;
             Monies = monies;
             Strength = str;
             Constitution = con;
@@ -50,10 +51,11 @@
             Charisma = cha;
             Dexterity = dex;
             Intelligence = intel;
-            int[] statmod = {str, con, dex, intel, wis, cha};
+
+            int[] statmod = { str, con, dex, intel, wis, cha };
             for (int stat = 0; stat < statmod.Length; stat++)
             {
-                if (statmod[stat] < 2){ statmod[stat] = -5; }
+                if (statmod[stat] < 2) { statmod[stat] = -5; }
                 else if (statmod[stat] < 4) { statmod[stat] = -4; }
                 else if (statmod[stat] < 6) { statmod[stat] = -3; }
                 else if (statmod[stat] < 8) { statmod[stat] = -2; }
@@ -66,17 +68,17 @@
                 else { statmod[stat] = +5; }
             }
             StatMod = statmod;
-         
+            EquippedWeapon = equippedWeapon;
         }
-        
-        public Character() { }
+
+        public  Character() { }
 
         //Methods     
-        public bool hit()
+        public virtual bool hit()
         {
             Random rng = new Random(); int attack = rng.Next(1, 21); if (attack >= AC) { return true; } else { return false; }
         }
-        public int injury(Items weapon) { int Health = CHealth - weapon.damage(); return Health; }
+        public int injury(Items weapon) { int Health = CHealth - weapon.alterHealth(); return Health; }
 
 
        

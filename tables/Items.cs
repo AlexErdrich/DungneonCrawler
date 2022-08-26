@@ -11,8 +11,7 @@
 
         //Props (public datatype PascalCaseOfCamelCase)
 
-        public int ItemName { get; set; }
-        public int DamageType { get; set; }
+        public int ItemName { get; set; }     
         public string Description { get; set; }
         public int MinDamage { get { return _minDamage; } set { { if (_minDamage <= _maxDamage) { _minDamage = value; } else { _minDamage = _maxDamage; } } } }
         public int MaxDamage { get; set; }
@@ -24,11 +23,10 @@
         //Constructors (public class(props)) (ctor + tab + tab for default)
 
 
-        public Items(string description, decimal wCost, decimal reSellCost, int damageType, int minDamage, int maxDamge, int itemName)
+        public Items(string description, decimal wCost, decimal reSellCost, int minDamage, int maxDamge, int itemName)
         {
             ItemName = itemName;
-            WCost = wCost;
-            DamageType = damageType;
+            WCost = wCost;            
             MinDamage = minDamage;
             MaxDamage = maxDamge;
             Description = description;
