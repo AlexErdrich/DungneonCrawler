@@ -121,6 +121,7 @@ namespace homework
             string desc3 = rooms3[new Random().Next(rooms3.Length)];
 
             return desc1 + desc2 + desc3;
+
         }
 
     }//end Class
