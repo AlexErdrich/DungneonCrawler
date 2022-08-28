@@ -106,15 +106,15 @@ namespace homework
         {
             string[] rooms =
              {
-               "As you enter the room, ",
+               "As you enter the room, ", "The air in the room is smoky, ", "A draft blow throughout the room, ", 
             };
             string[] rooms2 =
              {
-               "the floor boards creak and you suddenly ",
+               "the floor boards creak with your every step. ", "a thick smell of urine permeates the air. ","chiming can be heard as bones rattle from the rafters. ", "the rotted and dried remains of three humans lie strewn in the room. ","the body of a dwarf, dead for several weeks, lies upon the floor, it's head crushed in and it's body stripped of everything. ", "twenty iron hooks and pegs have been hammered into one wall at a height of four to six feet off the floor. Laying along one wall is a partially intact medium sized humanoid skeleton. "
            };
             string[] rooms3 =
              {
-                $"spot a {Monster.SpawnWeakEnemy} that looks to be eating the remains of the last adventurer.",
+                $"You suddenly spot a {Monster.SpawnWeakEnemy} that looks to be eating the remains of the last adventurer.",
             };
             string desc1 = rooms[new Random().Next(rooms.Length)];
             string desc2 = rooms2[new Random().Next(rooms2.Length)];
