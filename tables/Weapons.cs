@@ -21,6 +21,8 @@ namespace tables
             DmgType = dmgType;
             Ranged = ranged;
         }
+        #region WeaponStats+
+
         public static Weapons Wpn()
         {
             Weapons club = new Weapons("Club", "A blunt object used to Whack things with. ", 4, 2, 1, 4, DamageType.Blunt, Weapon.Club, false);
@@ -59,6 +61,7 @@ namespace tables
             Weapons magic = new Weapons("Magic", "When in doubt hit them with a magic missile. ", 0, 0, 1, 8, DamageType.Blunt, Weapon.Magic, true);
             Weapons claw = new Weapons("Claw", "When your teeth are just not cutting it. ", 0,0,1,8,DamageType.Slash, Weapon.Claw, false);
             Weapons rick = new Weapons("Rick", "The man, the Myth, the legend. ", 0, 0, 1, 1, DamageType.Blunt, Weapon.Rick, true);
+        #endregion
 
             List<Weapons> wpns = new List<Weapons>()
             {
@@ -76,4 +79,3 @@ namespace tables
 
 }
 
-//Club, Dagger, GreatClub, Handaxe, Javelin, LightHammer, Mace, Quaterstaff, Sickle, Spear, LightCrossbow, Shortbow, Sling, Battleaxe, Flail, Glaive, Greataxe,  Greatsword, Longsword, Maul, Morningstar, Pike, Rapier, Scimitar, Shortsword, Trident, Warpick, Warhammer, Whip, HandCrossbow, HeavyCrossbow, Longbow, Vine, Bite, Magic, Claw, Rick
