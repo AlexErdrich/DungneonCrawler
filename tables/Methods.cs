@@ -107,6 +107,7 @@ namespace tables
             return spawnWeakEnemy[new Random().Next(spawnWeakEnemy.Count)];
         }
         #endregion
+
         #region Normal Monster 
         public static Monster SpawnNormEnemy()
         {
