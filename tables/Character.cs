@@ -14,10 +14,10 @@
         //Props (public datatype PascalCaseOfCamelCase)
         public string Name { get; set; }
         public int AC { get; set; }
+        public int MaxHealth { get; set;  }  
         public int CHealth { get { return _currentHealth; } set { if (value > MaxHealth) { _currentHealth = MaxHealth; } else { _currentHealth = value; } } }
-        public int MaxHealth { get; set;  }
-        public int CMana { get { return _currentMana; } set { if (value > MaxMana) { _currentMana = MaxMana; } else { _currentMana = value; } } }
         public int MaxMana { get; set; }
+        public int CMana { get { return _currentMana; } set { if (value > MaxMana) { _currentMana = MaxMana; } else { _currentMana = value; } } }
         public int CExp { get;  set;}
         public int NExp { get; set; }
         public decimal Monies { get { return _monies; } set { _monies = value; } }
@@ -28,22 +28,22 @@
         public int Intelligence { get; set; }
         public int Charisma { get; set; }
         public int[] StatMod { get; }
-        public Weapon EquippedWeapon { get; set; }
+        public Weapons EquippedWeapon { get; set; }
 
 
 
 
         //Constructors (public class(props)) (ctor + tab + tab for default)
-        public Character(string name, int ac, int cHealth, int maxHealth, int cMana, int maxMana, int cExp, int nExp, decimal monies, int str, int con, int dex, int intel, int wis, int cha, Weapon equippedWeapon)
+        public Character(string name, int ac, int cHealth, int maxHealth, int cMana, int maxMana, int cExp, int nExp, decimal monies, int str, int con, int dex, int intel, int wis, int cha, Weapons equippedWeapon)
         {
             Name = name;
-            AC = ac;
-            CHealth = cHealth;
+            AC = ac;  
             MaxHealth = maxHealth;
-            CMana = cMana;
+            CHealth = cHealth;
             MaxMana = maxMana;
-            CExp = cExp;
+            CMana = cMana;
             NExp = nExp;
+            CExp = cExp;
             Monies = monies;
             Strength = str;
             Constitution = con;
@@ -51,7 +51,7 @@
             Charisma = cha;
             Dexterity = dex;
             Intelligence = intel;
-
+            #region
             int[] statmod = { str, con, dex, intel, wis, cha };
             for (int stat = 0; stat < statmod.Length; stat++)
             {
@@ -67,6 +67,7 @@
                 else if (statmod[stat] < 20) { statmod[stat] = +4; }
                 else { statmod[stat] = +5; }
             }
+            #endregion
             StatMod = statmod;
             EquippedWeapon = equippedWeapon;
         }
@@ -80,9 +81,30 @@
         }
         public int injury(Items weapon) { int Health = CHealth - weapon.alterHealth(); return Health; }
 
+        public override string ToString()
+        {
+            return $@"
+*******INFO******
+{Name}
 
-       
-        
-        // 0-1 (-5) 2-3 (-4) 4-5 (-3) 6-7 (-2) 8-9 (-1) 10-11 (0) 12-13 (+1) 14-15 (+2) 16-17 (+3) 18-19 (+4) 20 (+5)
+----
+Life: {CHealth} of {MaxHealth}
+Mana: {CMana} of {MaxMana}
+
+
+--- Stat Scores
+Str: {Strength} Con: {Constitution} Dex: {Dexterity} 
+
+Int: {Intelligence} Wis: {Wisdom} Cha: {Charisma}
+
+----Items
+Equipped Weapon: {EquippedWeapon}
+
+Money: {Monies}
+
+";
+        }
+
+
     }
 }  

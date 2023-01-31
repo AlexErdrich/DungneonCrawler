@@ -13,7 +13,7 @@
 
         public string ItemName { get; set; }     
         public string Description { get; set; }
-        public int MinDamage { get { return _minDamage; } set { { if (_minDamage <= _maxDamage) { _minDamage = value; } else { _minDamage = _maxDamage; } } } }
+        public int MinDamage { get { return _minDamage; } set { { if (_minDamage <= _maxDamage) { _minDamage = value; } else { _minDamage = _maxDamage -1; } } } }
         public int MaxDamage { get; set; }
         public decimal WCost { get; set; }
 
@@ -23,12 +23,12 @@
         //Constructors (public class(props)) (ctor + tab + tab for default)
 
 
-        public Items(string itemName,string description, decimal wCost, decimal reSellCost, int minDamage, int maxDamge )
+        public Items(string itemName,string description, decimal wCost, decimal reSellCost, int maxDamge, int minDamage)
         {
             ItemName = itemName;
             WCost = wCost;            
-            MinDamage = minDamage;
-            MaxDamage = maxDamge;
+            MaxDamage = maxDamge; 
+            MinDamage = minDamage;            
             Description = description;
 
         }
@@ -37,7 +37,7 @@
         //Methods
 
         
-        public int alterHealth() { Random rng = new Random(); int damage = rng.Next(MinDamage, MaxDamage + 1); return damage;}
+        public int alterHealth() { Random rng = new Random(); int damage = rng.Next(MaxDamage,MinDamage); return damage;}
 
         public decimal price() { decimal sprice = WCost / 2;return sprice;}       
 

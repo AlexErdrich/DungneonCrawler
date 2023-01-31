@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using tables;
 
 namespace homework
@@ -15,16 +17,26 @@ namespace homework
 
             int floor = 0;
             Console.WriteLine("\n\nPlease, Tell us your name, great hero... ");
-            string username = Console.ReadLine();
+            string playerName = Console.ReadLine();
 
             var races = Enum.GetValues(typeof(Race));
             int index = 1;
             foreach (var race in races) { Console.WriteLine($"{index}) {race}"); index++; }
-            Console.WriteLine("Please select from the list, what race you want to be.");
+            Console.WriteLine("\n\nPlease select from the list, what race you want to be.");
             int userInput = int.Parse(Console.ReadLine()) - 1;
             Race userRace = (Race)userInput;
 
+            var jobs = Enum.GetValues(typeof(Job));
+            foreach (var job in jobs) {Console.WriteLine($"{index}) {job}"); index++; }
 
+            Console.WriteLine("\n\nPlease select from the list, what Profession would you like to be.");
+            int userJobInput = int.Parse(Console.ReadLine()) -1;
+            Job userJob = (Job)userJobInput;
+            //need weapon gerneration.
+            Weapons playerweapons = Methods.Wpn()[17];
+
+            Player player = new Player(playerName, 10, 10, 10, 10, 10, 0, 0, 0, 10, 10, 10, 10, 10, 10, userRace, playerweapons, userJob);
+           
             bool gameRun = true;
             bool encounter = true;
             do
@@ -42,8 +54,11 @@ namespace homework
                 switch (actions)
                 {
                     case ConsoleKey.E:
-                        string room = GetRoom();
+                        string room = Methods.getRoom();
                         Console.WriteLine(room);
+                        Monster monster = Methods.SpawnWeakEnemy();
+
+                        Console.WriteLine($"You have found a {monster.Name}");
 
                         do
                         {
@@ -62,14 +77,35 @@ namespace homework
                             {
                                 case ConsoleKey.A:
                                     Console.WriteLine($"You have attacked.");
+                                    Methods.DoBattle(player, monster);
+                                    if (monster.CHealth <= 0) 
+                                    {
+                                        floor++;
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine($"\nYou killed {monster.Name}!");
+                                        Console.Beep(700, 500);
+                                        Console.ResetColor();
+                                        encounter = false;
+                                    }
+
+                                    if (player.CHealth <= 0)
+                                    {
+                                        Console.WriteLine("Dude.... You died!\a");
+                                        gameRun = false;
+                                    }
+
                                     break;
 
                                 case ConsoleKey.R:
-                                    Console.WriteLine($"You have Run Away.");
+
+                                    Console.WriteLine($"You have run away. Your foe gets a free attack.");
+                                    Methods.DoAttack(monster, player);
                                     encounter = false;
                                     break;
 
                                 case ConsoleKey.C:
+                                   Console.WriteLine($"Floor number: {floor}");
+
                                     break;
 
                                 case ConsoleKey.M:
@@ -102,29 +138,18 @@ namespace homework
             } while (gameRun == true);
 
         }
-        private static string GetRoom()
-        {
-            string[] rooms =
-             {
-               "As you enter the room, ", "The air in the room is smoky, ", "A draft blow throughout the room, ", 
-            };
-            string[] rooms2 =
-             {
-               "the floor boards creak with your every step. ", "a thick smell of urine permeates the air. ","chiming can be heard as bones rattle from the rafters. ", "the rotted and dried remains of three humans lie strewn in the room. ","the body of a dwarf, dead for several weeks, lies upon the floor, it's head crushed in and it's body stripped of everything. ", "twenty iron hooks and pegs have been hammered into one wall at a height of four to six feet off the floor. Laying along one wall is a partially intact medium sized humanoid skeleton. "
-           };
-            string[] rooms3 =
-             {
-                $"You suddenly spot a {Monster.SpawnWeakEnemy} that looks to be eating the remains of the last adventurer.",
-            };
-            string desc1 = rooms[new Random().Next(rooms.Length)];
-            string desc2 = rooms2[new Random().Next(rooms2.Length)];
-            string desc3 = rooms3[new Random().Next(rooms3.Length)];
-
-            return desc1 + desc2 + desc3;
-
-        }
+        
 
     }//end Class
 }//end Name
 
 
+// {
+//return $@"
+//** MONSTER **
+//{Name}
+//Life: {Life} of {MaxLife}
+//Damage: {MinDamage} to {MaxDamage}
+//Block: {Block}
+//Description:
+//{Description}"; }
