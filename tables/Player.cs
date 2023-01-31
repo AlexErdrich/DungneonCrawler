@@ -10,13 +10,13 @@ namespace tables
     {
 
         public Race CharacterRace { get; set; }
-        public Class1 Class1 { get; set; }
+        public Job Job { get; set; }
 
 
-        public Player(string name, int ac, int cHealth, int maxHealth, int cMana, int maxMana, int cExp, int nExp, decimal monies, int str, int con, int dex, int intel, int wis, int cha, Race characterRace, Weapon equippedWeapon, Class1 class1) : base(name, ac, cHealth, maxHealth, cMana, maxMana, cExp, nExp, monies, str, con, dex, intel, wis, cha, equippedWeapon)
+        public Player(string name, int ac, int maxHealth, int cHealth, int maxMana, int cMana, int nExp, int cExp, decimal monies, int str, int con, int dex, int intel, int wis, int cha, Race characterRace, Weapons equippedWeapon, Job job) : base(name, ac, cHealth, maxHealth, cMana, maxMana, cExp, nExp, monies, str, con, dex, intel, wis, cha, equippedWeapon)
         {
             CharacterRace = characterRace;
-            Class1 = class1;
+            Job = job;
 
 
             #region Racemods
@@ -49,15 +49,15 @@ namespace tables
 
             #region Class Mods
 
-            switch (Class1)
+            switch (Job)
             {
-                case Class1.Warrior: Strength += 4; Constitution += 4; Dexterity += 2;
+                case Job.Warrior: Strength += 4; Constitution += 4; Dexterity += 2;
                     break;
-                case Class1.Ranger: Strength += 2; Constitution += 3; Dexterity += 4;
+                case Job.Ranger: Strength += 2; Constitution += 3; Dexterity += 4;
                     break;
-                case Class1.Mage: Intelligence += 4; Constitution += 2; Wisdom += 4;
+                case Job.Mage: Intelligence += 4; Constitution += 2; Wisdom += 4;
                     break;
-                case Class1.Priest: Charisma += 4; Constitution += 2; Wisdom += 4;
+                case Job.Priest: Charisma += 4; Constitution += 2; Wisdom += 4;
                     break;
                 default:
                     break;
